@@ -161,14 +161,14 @@ const HomePage = () => (
 
           {/* Feature 2: Eco-Hydration (Standard card) */}
           <div className="feature-card card-white" style={{ background: '#f8fafc', gridColumn: 'span 1' }}>
-            <div className="feature-icon">💧</div>
+            <div className="feature-icon"><span className="material-symbols-outlined" style={{ fontSize: '32px' }}>water_drop</span></div>
             <h3>Eco-Hydration</h3>
             <p>Advanced filtration and recirculation systems. Precision meets sustainability.</p>
           </div>
 
           {/* Feature 3: Ceramic Guard (Dark card) */}
           <div className="feature-card card-navy" style={{ gridColumn: 'span 1' }}>
-            <div className="feature-icon" style={{ background: 'rgba(255,255,255,0.05)', color: '#c5ff00' }}>🛡️</div>
+            <div className="feature-icon" style={{ background: 'rgba(255,255,255,0.05)', color: '#c5ff00' }}><span className="material-symbols-outlined" style={{ fontSize: '32px' }}>shield</span></div>
             <h3>Ceramic Guard</h3>
             <p>Every wash includes a micro-layer of hydrophobic protection.</p>
           </div>
@@ -285,7 +285,7 @@ const LocationsPage = () => {
             <h1 style={{ fontSize: '2.5rem', fontWeight: 800 }}>Find the closest precision car care center to you.</h1>
           </div>
           <div className="search-field" style={{ position: 'relative' }}>
-            <span style={{ position: 'absolute', left: '1.25rem', top: '50%', transform: 'translateY(-50%)', opacity: 0.5 }}>🔍</span>
+            <span className="material-symbols-outlined" style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', opacity: 0.5, fontSize: '20px' }}>search</span>
             <input type="text" placeholder="Enter Zip Code or City" style={{ paddingLeft: '3rem', background: '#f1f5f9', border: 'none' }} />
           </div>
         </div>
@@ -314,16 +314,18 @@ const LocationsPage = () => {
                   <span className="location-distance" style={{ color: '#64748b', fontWeight: 600 }}>{location.distance}</span>
                 </div>
                 <h3>{location.name}</h3>
-                <p className="location-address"><span></span> {location.address}</p>
+                <p className="location-address"><span className="material-symbols-outlined" style={{ fontSize: '16px', verticalAlign: 'middle', marginRight: '4px' }}>location_on</span> {location.address}</p>
                 <div className="location-meta">
-                  <span className="location-status" style={{ color: location.statusColor }}><span>🕒</span> {location.status}</span>
+                  <span className="location-status" style={{ color: location.statusColor }}><span className="material-symbols-outlined" style={{ fontSize: '16px', verticalAlign: 'middle', marginRight: '4px' }}>schedule</span> {location.status}</span>
                   <span className="location-subtext">• {location.subtext}</span>
                 </div>
                 <div className="location-actions" style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem' }}>
-                  <Link to="/book" className="btn btn-outline-dark" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', borderColor: '#00b4ff', color: '#00b4ff' }}>
-                    <span></span> Get Directions
+                  <Link to="/book" className="btn btn-outline-dark" style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', borderColor: '#00b4ff', color: '#00b4ff', fontSize: '0.85rem' }}>
+                    <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>explore</span> Get Directions
                   </Link>
-                  <button className="icon-button" style={{ background: '#001529', color: 'white', padding: '0.75rem', borderRadius: '8px', border: 'none', width: '48px', flexShrink: 0 }}>📅</button>
+                  <button className="icon-button" style={{ background: '#001529', color: 'white', padding: '0.75rem', borderRadius: '8px', border: 'none', width: '48px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>calendar_month</span>
+                  </button>
                 </div>
               </div>
             ))}
@@ -362,16 +364,18 @@ const BookingPage = () => {
         {/* Vehicle Type Selection Grid */}
         <div className="vehicle-grid">
           {[
-            { id: 'sedan', name: 'Sedan', icon: '🚗' },
-            { id: 'suv', name: 'SUV', icon: '🚙' },
-            { id: 'truck', name: 'Truck', icon: '🚚' }
+            { id: 'sedan', name: 'Sedan', icon: 'directions_car' },
+            { id: 'suv', name: 'SUV', icon: 'airport_shuttle' },
+            { id: 'truck', name: 'Truck', icon: 'local_shipping' }
           ].map((v) => (
             <div
               key={v.id}
               className={`vehicle-card ${selectedVehicle === v.id ? 'selected' : ''}`}
               onClick={() => setSelectedVehicle(v.id)}
             >
-              <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{v.icon}</div>
+              <div style={{ marginBottom: '1.25rem' }}>
+                <span className="material-symbols-outlined" style={{ fontSize: '3.5rem', color: selectedVehicle === v.id ? '#001529' : '#94a3b8', transition: 'color 0.3s ease' }}>{v.icon}</span>
+              </div>
               <h3>{v.name}</h3>
             </div>
           ))}
@@ -413,23 +417,23 @@ const ConfirmationPage = () => {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }}>
                 {/* Individual detail points */}
                 <div className="detail-item">
-                  <div className="detail-icon">📅</div>
+                  <div className="detail-icon"><span className="material-symbols-outlined">calendar_today</span></div>
                   <div>
                     <div style={{ fontSize: '0.75rem', color: '#64748b' }}>DATE & TIME</div>
                     <div style={{ fontWeight: 700 }}>May 22, 2026</div>
-                    <div style={{ fontSize: '0.85rem' }}>00:00 PM EST</div>
+                    <div style={{ fontSize: '0.85rem' }}>10:30 AM EST</div>
                   </div>
                 </div>
                 <div className="detail-item">
-                  <div className="detail-icon">📍</div>
+                  <div className="detail-icon"><span className="material-symbols-outlined">location_on</span></div>
                   <div>
                     <div style={{ fontSize: '0.75rem', color: '#64748b' }}>LOCATION</div>
-                    <div style={{ fontWeight: 700 }}>chilenje Hub</div>
+                    <div style={{ fontWeight: 700 }}>Chilenje Hub</div>
                     <div style={{ fontSize: '0.85rem' }}>412 Purity Ave, LSK</div>
                   </div>
                 </div>
                 <div className="detail-item">
-                  <div className="detail-icon">🚿</div>
+                  <div className="detail-icon"><span className="material-symbols-outlined">water_drop</span></div>
                   <div>
                     <div style={{ fontSize: '0.75rem', color: '#64748b' }}>SERVICE</div>
                     <div style={{ fontWeight: 700 }}>Full Detailing</div>
@@ -449,7 +453,7 @@ const ConfirmationPage = () => {
             <h3 style={{ margin: '2rem 0' }}>Recent Activity</h3>
             <div style={{ display: 'grid', gap: '1rem' }}>
               <div className="activity-card">
-                <div className="detail-icon"></div>
+                <div className="detail-icon"><span className="material-symbols-outlined">waves</span></div>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <strong>Deluxe Exterior Wash</strong>
@@ -461,7 +465,7 @@ const ConfirmationPage = () => {
                 </div>
               </div>
               <div className="activity-card">
-                <div className="detail-icon"></div>
+                <div className="detail-icon"><span className="material-symbols-outlined">stars</span></div>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                     <strong>Interior Deep Clean</strong>
@@ -478,22 +482,22 @@ const ConfirmationPage = () => {
           {/* Sidebar: Loyalty and Referrals */}
           <aside>
             <div className="referral-card">
-              <div style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>🎁</div>
+              <div style={{ marginBottom: '1rem' }}><span className="material-symbols-outlined" style={{ fontSize: '32px', color: '#c5ff00' }}>card_giftcard</span></div>
               <h3>Refer a Friend</h3>
               <p style={{ fontSize: '0.85rem', opacity: 0.8, marginTop: '0.5rem' }}>Give K10, get K10. Share the purity with your inner circle.</p>
               <div className="referral-box">
-                <span>PURE-WASH-2026</span>
-                <span>📋</span>
+                <span style={{ fontWeight: 700, letterSpacing: '1px' }}>PURE-WASH-2026</span>
+                <span className="material-symbols-outlined" style={{ fontSize: '18px', cursor: 'pointer' }}>content_copy</span>
               </div>
               <button className="btn btn-primary" style={{ width: '100%' }}>Share Invite Link</button>
             </div>
 
-            <div className="reward-card">
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-                  <span>🏆</span>
-                  <strong>Purity Rewards</strong>
-                </div>
+              <div className="reward-card">
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                    <span className="material-symbols-outlined" style={{ color: '#c5ff00' }}>workspace_premium</span>
+                    <strong>Purity Rewards</strong>
+                  </div>
                 <div style={{ fontWeight: 800 }}>7/10</div>
               </div>
               <div className="progress-bar-bg">
@@ -717,7 +721,7 @@ const SignInPage = () => {
           <Link to="/pricing" style={{ color: '#64748b', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 500 }}>Memberships</Link>
           <div style={{ width: '1px', height: '24px', background: '#eee', margin: '0 0.5rem' }}></div>
           <Link to="#" style={{ color: '#0f172a', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span>❓</span> Support
+            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>help</span> Support
           </Link>
         </div>
       </header>
@@ -796,7 +800,7 @@ const SignInPage = () => {
                   <a href="#" style={{ fontSize: '0.75rem', color: '#00b4ff', textDecoration: 'none', fontWeight: 700 }}>Forgot Password?</a>
                 </div>
                 <div style={{ position: 'relative' }}>
-                  <span style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', opacity: 0.5 }}></span>
+                  <span className="material-symbols-outlined" style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', opacity: 0.5 }}>lock</span>
                   <input
                     type={showPassword ? "text" : "password"}
                     placeholder="••••••••"
@@ -817,7 +821,9 @@ const SignInPage = () => {
                     onClick={() => setShowPassword(!showPassword)}
                     style={{ position: 'absolute', right: '1rem', top: '50%', transform: 'translateY(-50%)', opacity: 0.5, cursor: 'pointer', userSelect: 'none' }}
                   >
-                    {showPassword ? '' : ''}
+                    <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>
+                      {showPassword ? 'visibility' : 'visibility_off'}
+                    </span>
                   </span>
                 </div>
               </div>
